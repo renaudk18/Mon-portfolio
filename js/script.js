@@ -519,3 +519,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+// ================================
+// BOUTON RETOUR EN HAUT
+// ================================
+
+const scrollToTop = document.getElementById("scrollToTop");
+
+// Afficher le bouton après avoir descendu dans la page
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+        scrollToTop.classList.add("visible");
+    } else {
+        scrollToTop.classList.remove("visible");
+    }
+});
+
+// Retour en haut avec défilement fluide
+scrollToTop.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
