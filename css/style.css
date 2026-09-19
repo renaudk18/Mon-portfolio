@@ -1,0 +1,1901 @@
+/*  VARIABLES CSS :root permet de créer des variables globales. */
+
+
+:root {
+
+  /* Couleurs principales */
+  --bg: #f8f9fa;             /* Couleur de fond générale */
+  --surface: #fff;           /* Fond des cartes */
+  --text: #1a202c;           /* Couleur principale du texte */
+  --muted: #68717c;          /* Texte secondaire */
+  --accent: #059669;         /* Vert principal */
+  --accent-dark: #047857;    /* Vert au survol */
+
+  /* Bordures et fonds secondaires */
+  --line: #e5e7eb;
+  --green-soft: #e8faf3;
+  --blue-soft: #eaf2ff;
+
+  /* Formes et ombres */
+  --radius: 10px;
+  --shadow: 0 5px 18px rgba(26, 32, 44, .06);
+
+  /* Largeur maximale du contenu */
+  --container: 1080px;
+}
+
+
+/*  RÉINITIALISATION GÉNÉRALE box-sizing: border-box permet d'avoir un calcul plus simple des dimensions des éléments*/
+
+* {
+  box-sizing: border-box;
+}
+
+
+/*
+   Permet d'avoir un défilement doux lorsqu'on clique sur les liens comme :<a href="#projets"> */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Style général de la page. */
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+
+  /*
+     On utilise Inter en priorité.i Inter n'est pas disponible,le navigateur utilise les polices suivantes.  */
+  
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+
+/*  ÉLÉMENTS HTML GÉNÉRAUX */
+
+
+/* Retirer soulignement des liens. */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Les éléments de formulaire utilisent la même police que le reste du site.*/
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* .container est utilisé pour centrer le contenu du site. */
+
+.container {
+  width: min(
+    calc(100% - 64px),
+    var(--container)
+  );
+
+  margin: auto;
+}
+
+
+/* Espacement vertical général des sections. */
+
+.section {
+  padding: 88px 0;
+}
+
+
+/* 4. ACCESSIBILITÉ */
+
+
+/* .sr-only signifie "screen reader only". L'élément reste invisible visuellement, mais peut être lu par un lecteur d'écran. */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* IMAGE HERO */
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.hero-image {
+  width: 80%;
+  height: 85%;
+   object-fit: contain;
+  display: block;
+}
+
+/* BARRE SUPÉRIEURE */
+
+
+/* Petite barre située au-dessus du menu principal. */
+
+.topbar {
+  height: 28px;
+
+  border-bottom: 1px solid var(--line);
+
+  font-size: 11px;
+  color: #65706e;
+
+  display: flex;
+
+  /*
+     Premier élément à gauche,
+     deuxième élément à droite.
+  */
+  justify-content: space-between;
+
+  align-items: center;
+
+  /*
+     Espace horizontal.
+  */
+  padding: 0 max(
+    20px,
+    calc((100% - 1240px) / 2)
+  );
+}
+
+
+/*  HEADER / NAVIGATION  */
+
+
+/* Header principal. position: sticky permet de garder le menu visible pendant le défilement. */
+
+.site-header {
+  background: rgba(255, 255, 255, .96);
+
+  position: sticky;
+  top: 0;
+
+  z-index: 50;
+
+  border-bottom: 1px solid var(--line);
+}
+
+
+/*Conteneur de la navigation.*/
+
+.nav {
+  height: 64px;
+
+  display: flex;
+
+  /* Logo à gauche, menu à droite. */
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* Carré vert contenant "AD". */
+
+.brand-mark {
+  width: 30px;
+  height: 30px;
+
+  background: var(--accent);
+  color: #fff;
+
+  border-radius: 7px;
+
+  /*
+     Centrer le texte.
+  */
+  display: grid;
+  place-items: center;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+/* Le nom et le sous-titre sont affichés l'un sous l'autre. */
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+
+/* Nom */
+
+.brand strong {
+  font-size: 12px;
+}
+
+
+/* Fonction */
+
+.brand small {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+
+/*  MENU DESKTOP  */
+
+.nav-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+
+  font-size: 12px;
+}
+
+
+/* Couleur des liens normaux. */
+
+.nav-links a:not(.nav-cta) {
+  color: #4b5563;
+}
+
+
+/* Lorsque la souris passe sur un lien. */
+
+.nav-links a:not(.nav-cta):hover {
+  color: var(--accent);
+}
+
+
+/*  BOUTON CONTACT  */
+
+.nav-cta {
+  background: var(--accent);
+  color: #fff !important;
+
+  border-radius: 7px;
+
+  padding: 10px 14px;
+}
+
+
+/*  BOUTON HAMBURGER  */
+
+
+/*Sur ordinateur, le bouton hamburger est caché. */
+
+.menu-toggle {
+  display: none;
+
+  border: 1px solid var(--line);
+  background: #fff;
+
+  border-radius: 7px;
+
+  width: 40px;
+  height: 40px;
+}
+
+
+/*  SECTION HERO */
+
+
+/* Première grande section du portfolio. */
+
+.hero {
+  padding: 72px 0 76px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* Organisation en deux colonnes : colonne 1 → texte ; colonne 2 → illustration */
+
+.hero-grid {
+  display: grid;
+
+  grid-template-columns: 1.12fr .88fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+/*  BADGE DISPONIBILITÉ  */
+
+.availability {
+  display: inline-block;
+
+  background: var(--green-soft);
+  color: var(--accent);
+
+  border: 1px solid #b8efd9;
+
+  border-radius: 20px;
+
+  padding: 5px 10px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* TITRE PRINCIPAL  */
+
+.hero h1 {
+  font-size: 40px;
+
+  line-height: 1.02;
+
+  /* Réduit légèrement l'espace entre les lettres. */
+  letter-spacing: -1.7px;
+
+  max-width: 620px;
+
+  margin: 18px 0 14px;
+}
+
+
+/* Partie verte du titre. HTML : <em>expériences digitales</em> */
+
+.hero h1 em {
+  font-style: normal;
+
+  color: var(--accent);
+
+  /* Soulignement pointillé. */
+
+  text-decoration: underline;
+  text-decoration-style: dotted;
+
+  text-underline-offset: 5px;
+}
+
+
+/*  DESCRIPTION  */
+
+.lead {
+  max-width: 610px;
+
+  color: var(--muted);
+
+  font-size: 15px;
+}
+
+
+/*  BOUTONS HERO  */
+
+.actions {
+  display: flex;
+
+  gap: 10px;
+
+  margin: 22px 0 28px;
+}
+
+
+/* Style général des boutons. */
+
+.button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 0 17px;
+
+  border-radius: 7px;
+
+  border: 1px solid var(--line);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/*
+   Bouton vert.
+*/
+
+.button.primary {
+  background: var(--accent);
+
+  border-color: var(--accent);
+
+  color: #fff;
+}
+
+
+/*
+   Couleur du bouton lorsque la souris passe dessus.
+*/
+
+.button.primary:hover {
+  background: var(--accent-dark);
+}
+
+
+/*
+   Bouton secondaire.
+*/
+
+.button.secondary {
+  background: #fff;
+}
+
+
+/* ---------- STATISTIQUES ---------- */
+
+.metrics {
+  display: flex;
+
+  gap: 46px;
+
+  border-top: 1px solid var(--line);
+
+  padding-top: 18px;
+}
+
+
+/*
+   Chiffre principal.
+*/
+
+.metrics strong {
+  display: block;
+
+  font-size: 19px;
+}
+
+
+/*
+   Texte sous le chiffre.
+*/
+
+.metrics span {
+  display: block;
+
+  font-size: 10px;
+
+  color: var(--muted);
+}
+
+
+/*
+   Le deuxième chiffre est vert.
+*/
+
+.metrics div:nth-child(2) strong {
+  color: var(--accent);
+}
+
+
+
+
+/* =========================================================
+   TITRES DE SECTIONS
+   ========================================================= */
+
+
+/*
+   Petit titre vert :
+
+   01. PARCOURS & PHILOSOPHIE
+*/
+
+.section-heading span {
+  font-size: 10px;
+
+  color: var(--accent);
+
+  font-weight: 800;
+
+  letter-spacing: .5px;
+}
+
+
+/*
+   Grand titre de section.
+*/
+
+.section-heading h2 {
+  font-size: 23px;
+
+  line-height: 1.15;
+
+  letter-spacing: -.5px;
+
+  margin: 7px 0;
+}
+
+
+/*
+   Description de section.
+*/
+
+.section-heading p {
+  color: var(--muted);
+
+  font-size: 11px;
+
+  max-width: 560px;
+}
+
+
+/*
+   Classe permettant de centrer le contenu.
+*/
+
+.centered {
+  text-align: center;
+}
+
+
+/*
+   Centre également le paragraphe.
+*/
+
+.centered p {
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   SECTION À PROPOS
+   ========================================================= */
+
+.about {
+  background: #fff;
+}
+
+
+/*
+   Deux colonnes :
+
+   gauche → présentation
+   droite → parcours
+*/
+
+.about-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 65px;
+
+  margin-top: 45px;
+}
+
+
+/* Titres */
+
+.about h3,
+.contact h3 {
+  font-size: 15px;
+}
+
+
+/* Paragraphes */
+
+.about p {
+  font-size: 11px;
+
+  color: var(--muted);
+}
+
+
+/* ---------- PETITES CARTES ---------- */
+
+.mini-cards {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+
+.mini-cards article {
+  border: 1px solid var(--line);
+
+  border-radius: 7px;
+
+  padding: 13px;
+}
+
+
+/*
+   Petit carré vert.
+*/
+
+.mini-cards span {
+  display: block;
+
+  background: var(--green-soft);
+
+  color: var(--accent);
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 5px;
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+
+/*
+   Le titre et le texte
+   sont placés sur des lignes séparées.
+*/
+
+.mini-cards b,
+.mini-cards small {
+  display: block;
+}
+
+
+.mini-cards b {
+  font-size: 10px;
+
+  margin-top: 6px;
+}
+
+
+.mini-cards small {
+  font-size: 7px;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   11. TIMELINE / PARCOURS
+   ========================================================= */
+
+.timeline {
+  position: relative;
+
+  padding-left: 18px;
+}
+
+
+/*
+   Ligne verticale du parcours.
+*/
+
+.timeline:before {
+  content: "";
+
+  position: absolute;
+
+  left: 4px;
+  top: 38px;
+  bottom: 5px;
+
+  width: 1px;
+
+  background: #77d8bc;
+}
+
+
+/*
+   Chaque expérience.
+*/
+
+.timeline article {
+  position: relative;
+
+  margin: 18px 0;
+}
+
+
+/*
+   Petit cercle sur la ligne.
+*/
+
+.timeline i {
+  position: absolute;
+
+  left: -18px;
+  top: 4px;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #dbe7e4;
+
+  border: 2px solid #fff;
+}
+
+
+/*
+   Premier élément = point vert.
+*/
+
+.timeline article:first-of-type i {
+  background: var(--accent);
+}
+
+
+/*
+   Date.
+*/
+
+.timeline small {
+  font-size: 8px;
+
+  background: var(--green-soft);
+
+  color: var(--accent);
+
+  padding: 3px 6px;
+}
+
+
+/*
+   Poste.
+*/
+
+.timeline h4 {
+  font-size: 11px;
+
+  margin: 7px 0 1px;
+}
+
+
+/*
+   Entreprise.
+*/
+
+.timeline b {
+  font-size: 9px;
+
+  color: #4b5563;
+}
+
+
+/*
+   Description.
+*/
+
+.timeline p {
+  font-size: 9px;
+
+  margin: 3px 0;
+}
+
+
+/* =========================================================
+   SECTION COMPÉTENCES
+   ========================================================= */
+
+.skills {
+  background: #f4f6f7;
+}
+
+
+/*
+   Utilisé pour mettre le titre à gauche
+   et la description à droite.
+*/
+
+.split {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  align-items: end;
+}
+
+
+.split > p {
+  max-width: 360px;
+
+  margin: 0 0 2px;
+}
+
+
+/*
+   Grille des services :
+
+   3 colonnes sur ordinateur.
+*/
+
+.service-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 14px;
+
+  margin-top: 36px;
+}
+
+
+/* ---------- CARTE SERVICE ---------- */
+
+.service {
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: 9px;
+
+  padding: 18px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/*
+   Petite icône verte.
+*/
+
+.icon {
+  display: grid;
+
+  place-items: center;
+
+  width: 28px;
+  height: 28px;
+
+  background: var(--green-soft);
+
+  color: var(--accent);
+
+  border-radius: 7px;
+
+  font-weight: 800;
+
+  font-size: 13px;
+}
+
+
+/*
+   Nom du service.
+*/
+
+.service h3 {
+  font-size: 12px;
+
+  margin: 13px 0 5px;
+}
+
+
+/*
+   Description du service.
+*/
+
+.service p {
+  font-size: 10px;
+
+  color: var(--muted);
+
+  /*
+     Toutes les cartes ont une hauteur
+     de texte similaire.
+  */
+  min-height: 42px;
+}
+
+
+/*
+   Petits tags techniques.
+*/
+
+.service small,
+.tags span {
+  font-size: 8px;
+
+  color: #66706e;
+
+  background: #f2f4f4;
+
+  padding: 3px 5px;
+
+  border-radius: 3px;
+}
+
+
+/* =========================================================
+   SECTION PROJETS
+   ========================================================= */
+
+.projects {
+  background: #fff;
+}
+
+
+/*
+   En-tête des projets.
+*/
+
+.project-head {
+  align-items: center;
+}
+
+
+/* ---------- BOUTONS DE FILTRE ---------- */
+
+.filters {
+  display: flex;
+
+  gap: 6px;
+}
+
+
+/*
+   Boutons "Tous", "SaaS", "Éco-design".
+*/
+
+.filters button {
+  border: 0;
+
+  background: #f1f3f4;
+
+  border-radius: 20px;
+
+  padding: 6px 10px;
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+
+/*
+   Bouton actuellement sélectionné.
+*/
+
+.filters .active {
+  background: var(--accent);
+
+  color: #fff;
+}
+
+
+/* ---------- GRILLE DES PROJETS ---------- */
+
+.project-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 16px;
+
+  margin-top: 36px;
+}
+
+
+/* Carte projet */
+
+.project {
+  border: 1px solid var(--line);
+
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+
+/* ---------- IMAGE / VISUEL DU PROJET ---------- */
+
+.project-visual {
+  height: 150px;
+
+  padding: 12px;
+
+  position: relative;
+}
+
+
+/*
+   Fond vert.
+*/
+
+.project-visual.green {
+  background:
+    linear-gradient(
+      135deg,
+      #e6faf3,
+      #c8f3e3
+    );
+}
+
+
+/*
+   Fond bleu.
+*/
+
+.project-visual.blue {
+  background:
+    linear-gradient(
+      135deg,
+      #edf4ff,
+      #d9e7ff
+    );
+}
+
+
+/*
+   Petit label en haut.
+*/
+
+.project-visual span {
+  font-size: 8px;
+
+  font-weight: 800;
+
+  color: var(--accent);
+}
+
+
+/*
+   Icône centrale du projet.
+*/
+
+.project-visual strong {
+  display: grid;
+
+  place-items: center;
+
+  font-size: 36px;
+
+  width: 52px;
+  height: 52px;
+
+  background: #fff;
+
+  border-radius: 9px;
+
+  position: absolute;
+
+  left: calc(50% - 26px);
+
+  top: 45px;
+
+  color: var(--accent);
+}
+
+
+/*
+   Icône bleue pour le projet bleu.
+*/
+
+.blue strong {
+  color: #2563eb;
+}
+
+
+/*
+   Petit texte en bas du visuel.
+*/
+
+.project-visual small {
+  position: absolute;
+
+  bottom: 13px;
+  left: 12px;
+
+  font-size: 8px;
+}
+
+
+/* ---------- CONTENU PROJET ---------- */
+
+.project-body {
+  padding: 14px;
+}
+
+
+/*
+   Catégorie du projet.
+*/
+
+.project-body > small {
+  font-size: 8px;
+
+  color: var(--accent);
+
+  font-weight: 800;
+}
+
+
+/*
+   Nom du projet.
+*/
+
+.project-body h3 {
+  font-size: 13px;
+
+  margin: 5px 0;
+}
+
+
+/*
+   Description.
+*/
+
+.project-body p {
+  font-size: 10px;
+
+  color: var(--muted);
+
+  min-height: 54px;
+}
+
+
+/*
+   Tags du projet.
+*/
+
+.tags {
+  display: flex;
+
+  gap: 5px;
+}
+
+
+/*
+   Lien vers l'étude de cas.
+*/
+
+.project-body a {
+  display: block;
+
+  margin-top: 17px;
+
+  font-size: 9px;
+
+  color: var(--accent);
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTION CONTACT
+   ========================================================= */
+
+.contact {
+  background: #f4f6f7;
+}
+
+
+/*
+   Deux colonnes :
+
+   gauche → informations
+   droite → formulaire
+*/
+
+.contact-grid {
+  display: grid;
+
+  grid-template-columns: .8fr 1.2fr;
+
+  gap: 45px;
+
+  margin-top: 42px;
+}
+
+
+/*
+   Texte des coordonnées.
+*/
+
+.contact-info p {
+  font-size: 10px;
+
+  color: var(--muted);
+}
+
+
+/* ---------- ENCADRÉ DISPONIBILITÉ ---------- */
+
+.availability-box {
+  background: var(--green-soft);
+
+  border: 1px solid #b8efd9;
+
+  border-radius: 8px;
+
+  padding: 13px;
+
+  margin: 20px 0;
+}
+
+
+.availability-box b,
+.availability-box small {
+  display: block;
+
+  font-size: 9px;
+}
+
+
+.availability-box b {
+  color: var(--accent);
+}
+
+
+.availability-box small {
+  margin-top: 5px;
+}
+
+
+/* ---------- FORMULAIRE ---------- */
+
+.contact-form {
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: 9px;
+
+  padding: 20px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/*
+   Label de chaque champ.
+*/
+
+.contact-form label {
+  display: block;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  margin-bottom: 13px;
+}
+
+
+/*
+   Style commun des champs.
+*/
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 5px;
+
+  border: 1px solid #dce1e2;
+
+  border-radius: 6px;
+
+  padding: 10px;
+
+  background: #fff;
+
+  outline: none;
+
+  font-size: 10px;
+}
+
+
+/*
+   Autorise le redimensionnement vertical
+   de la zone de message.
+*/
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+
+/*
+   Apparence du champ lorsqu'il reçoit le focus.
+*/
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px rgba(5, 150, 105, .1);
+}
+
+
+/* ---------- BAS DU FORMULAIRE ---------- */
+
+.form-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.form-bottom small {
+  font-size: 8px;
+
+  color: var(--muted);
+}
+
+
+/*
+   Message de succès.
+*/
+
+.form-success {
+  background: var(--green-soft);
+
+  border: 1px solid #b8efd9;
+
+  color: var(--accent);
+
+  padding: 10px;
+
+  border-radius: 6px;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  background: #fff;
+
+  border-top: 1px solid var(--line);
+
+  padding: 25px 0;
+}
+
+
+/*
+   Organisation du footer sur ordinateur.
+*/
+
+.footer-main {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto auto;
+
+  align-items: center;
+
+  gap: 30px;
+
+  font-size: 9px;
+}
+
+
+/*
+   Liens du footer.
+*/
+
+.footer-main nav {
+  display: flex;
+
+  gap: 18px;
+}
+
+
+.footer-main nav a,
+.footer-main div {
+  color: var(--muted);
+}
+
+
+/*
+   Petite note en bas.
+*/
+
+.footer-note {
+  border-top: 1px solid var(--line);
+
+  margin-top: 20px;
+
+  padding-top: 15px;
+
+  font-size: 8px;
+
+  color: #8a9290;
+
+  display: flex;
+
+  justify-content: space-between;
+}
+
+
+/* =========================================================
+    RESPONSIVE MOBILE
+   ========================================================= */
+
+
+/*
+   Toutes les règles suivantes s'appliquent
+   lorsque l'écran fait 800px ou moins.
+
+   C'est ici que le site passe en version mobile.
+*/
+
+@media (max-width: 800px) {
+
+
+  /* ---------- CONTENEUR ---------- */
+
+  .container {
+    width: min(
+      calc(100% - 32px),
+      520px
+    );
+  }
+
+
+  /* ---------- BARRE SUPÉRIEURE ---------- */
+
+  /*
+     Sur mobile, on cache la petite barre supérieure.
+  */
+
+  .topbar {
+    display: none;
+  }
+
+
+  /* ---------- HEADER ---------- */
+
+  .site-header {
+    position: sticky;
+  }
+
+
+  .nav {
+    height: 58px;
+  }
+
+
+  /* ---------- MENU MOBILE ---------- */
+
+
+  /*
+     Le menu est caché par défaut.
+  */
+
+  .nav-links {
+    display: none;
+
+    /*
+       Lorsqu'il sera ouvert par JavaScript,
+       la classe .open sera ajoutée.
+    */
+
+    position: fixed;
+
+    inset: 58px 0 auto 0;
+
+    background: #fff;
+
+    border-top: 1px solid var(--line);
+
+    padding: 22px 20px;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0;
+
+    box-shadow:
+      0 15px 25px rgba(0, 0, 0, .06);
+  }
+
+
+  /*
+     C'est cette classe que le JavaScript ajoute :
+
+     menu.classList.toggle('open');
+  */
+
+  .nav-links.open {
+    display: flex;
+  }
+
+
+  /*
+     Liens du menu mobile.
+  */
+
+  .nav-links a {
+    padding: 13px 10px;
+
+    font-size: 12px;
+
+    border-bottom: 1px solid #f0f1f1;
+  }
+
+
+  /*
+     Bouton contact dans le menu.
+  */
+
+  .nav-cta {
+    margin-top: 8px;
+
+    text-align: center;
+  }
+
+
+  /* ---------- HAMBURGER ---------- */
+
+
+  /*
+     Sur mobile, le bouton hamburger devient visible.
+  */
+
+  .menu-toggle {
+    display: grid;
+
+    place-content: center;
+
+    gap: 3px;
+  }
+
+
+  /*
+     Les lignes du hamburger.
+  */
+
+  .menu-toggle span:not(.sr-only) {
+    display: block;
+
+    width: 16px;
+
+    height: 1.5px;
+
+    background: var(--text);
+  }
+
+
+  /* ---------- SECTIONS ---------- */
+
+  .section {
+    padding: 52px 0;
+  }
+
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    padding: 38px 0;
+  }
+
+
+  /*
+     Sur mobile :
+
+     texte
+       ↓
+     illustration
+  */
+
+  .hero-grid,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+
+  /*
+     Titre plus petit sur mobile.
+  */
+
+  .hero h1 {
+    font-size: 31px;
+
+    letter-spacing: -1.1px;
+  }
+
+
+  .lead {
+    font-size: 11px;
+  }
+
+
+  /*
+     Les boutons passent l'un sous l'autre.
+  */
+
+  .actions {
+    flex-direction: column;
+  }
+
+
+  /*
+     Les boutons prennent toute la largeur.
+  */
+
+  .button {
+    width: 100%;
+  }
+
+
+  /* ---------- STATISTIQUES ---------- */
+
+  .metrics {
+    justify-content: space-between;
+
+    gap: 10px;
+  }
+
+
+  .metrics strong {
+    font-size: 14px;
+  }
+
+
+  .metrics span {
+    font-size: 7px;
+  }
+
+
+  /* ---------- CARTE HERO ---------- */
+
+  .hero-card {
+    height: 215px;
+  }
+
+
+  .system-icon {
+    margin: 30px auto 25px;
+  }
+
+
+  /* ---------- À PROPOS ---------- */
+
+  .about-grid {
+    margin-top: 30px;
+  }
+
+
+  .mini-cards {
+    gap: 8px;
+  }
+
+
+  /* ---------- TITRES ---------- */
+
+  .split {
+    display: block;
+  }
+
+
+  .split > p {
+    margin-top: 10px;
+  }
+
+
+  /* ---------- SERVICES ---------- */
+
+  /*
+     Une seule colonne sur mobile.
+  */
+
+  .service-grid,
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .service p {
+    min-height: auto;
+  }
+
+
+  /* ---------- PROJETS ---------- */
+
+  .project-visual {
+    height: 145px;
+  }
+
+
+  .project-head {
+    display: block;
+  }
+
+
+  .filters {
+    margin-top: 15px;
+  }
+
+
+  /* ---------- CONTACT ---------- */
+
+  .contact-grid {
+    margin-top: 28px;
+  }
+
+
+  /* ---------- FOOTER ---------- */
+
+  .footer-main {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+
+  .footer-main .brand {
+    justify-content: center;
+  }
+
+
+  .footer-main nav {
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+
+  .footer-note {
+    display: block;
+
+    text-align: center;
+
+    line-height: 1.8;
+  }
+}
+
+
+/* =========================================================
+    RESPECT DE "RÉDUIRE LES ANIMATIONS"
+   ========================================================= */
+
+
+/*
+   Certains utilisateurs demandent à leur ordinateur
+   de réduire les animations.
+
+   Dans ce cas, on désactive le scroll animé.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+}
+
+```css
+/* ============================================================
+   CHAMP EN ERREUR
+   ============================================================ */
+
+.input-error {
+  border: 2px solid #dc2626 !important;
+  outline: none;
+}
+
+
+/* ============================================================
+   MESSAGE D'ERREUR
+   ============================================================ */
+
+.form-error {
+  display: block;
+  margin-top: 6px;
+  color: #dc2626;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   MESSAGE DE FEEDBACK
+   ============================================================ */
+
+.form-success {
+  margin-top: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   MESSAGE DE SUCCÈS
+   ============================================================ */
+
+.form-success.success {
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+
+/* ============================================================
+   MESSAGE D'ERREUR GÉNÉRALE
+   ============================================================ */
+
+.form-success.error {
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+}
+
+
+/* ============================================================
+   BOUTON PENDANT LA SIMULATION
+   ============================================================ */
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
